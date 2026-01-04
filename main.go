@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/MartinRistov007/pokedex/internal/pokeapi"
@@ -189,6 +190,11 @@ func commandCatch(cfg *config, args []string) error {
 	}
 
 	name := args[0]
+	if strings.ToLower(name) == "fifulek" {
+		fmt.Printf("Throwing a Pokeball at %s...\n", name)
+		fmt.Printf("Unfortunately Pokeball is not big enough to catch this one . . .")
+		return nil
+	}
 	pokemon, err := cfg.pokeapiClient.GetPokemon(name)
 	if err != nil {
 		return err
